@@ -11,6 +11,7 @@ addonInitializerFrame:SetScript("OnEvent", function(self, event, loadedAddonName
 	end
 
 	addon.BattleResTimer:Initialize()
+	addon.EventHandler:Initialize()
 
 	self:UnregisterEvent("ADDON_LOADED")
 end)
