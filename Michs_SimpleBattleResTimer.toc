@@ -4,10 +4,13 @@
 ## Author: Mich
 ## Version: 0.1.0
 ## X-License: MIT
+## SavedVariables: MichsSimpleBattleResTimerDB
 
 Libs/LibStub/LibStub.lua
 Libs/MichsPixelPerfectLib-1.0/MichsPixelPerfectLib-1.0.lua
 
+Database.lua
 BattleResTimer.lua
 EventHandler.lua
+Options.lua
 Core.lua

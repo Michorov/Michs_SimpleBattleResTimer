@@ -64,6 +64,13 @@ function BattleResTimer:UpdateSettings()
 	iconFrame.stacksText:SetTextColor(1, 1, 1, 1)
 	iconFrame.stacksText:ClearAllPoints()
 	iconFrame.stacksText:SetPoint("BOTTOMRIGHT", iconFrame.border, "BOTTOMRIGHT", PP:ToUIScaled(-2), PP:ToUIScaled(1))
+
+	local settings = addon.Database:GetSettings()
+	if settings.enabled and (ticker or settings.alwaysShow) then
+		iconFrame:Show()
+	else
+		iconFrame:Hide()
+	end
 end
 
 function BattleResTimer:Start()
@@ -75,11 +82,16 @@ function BattleResTimer:Start()
 	previousCooldownStartTime = nil
 	self:UpdateBattleResState()
 
-	iconFrame:Show()
-
 	ticker = C_Timer.NewTicker(1, function()
 		self:UpdateBattleResState()
 	end)
+
+	local settings = addon.Database:GetSettings()
+	if settings.enabled and (ticker or settings.alwaysShow) then
+		iconFrame:Show()
+	else
+		iconFrame:Hide()
+	end
 end
 
 function BattleResTimer:Stop()
@@ -89,7 +101,13 @@ function BattleResTimer:Stop()
 	end
 
 	self:Reset()
-	iconFrame:Hide()
+
+	local settings = addon.Database:GetSettings()
+	if settings.enabled and settings.alwaysShow then
+		iconFrame:Show()
+	else
+		iconFrame:Hide()
+	end
 end
 
 function BattleResTimer:Reset()
