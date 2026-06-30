@@ -6,6 +6,18 @@ addon.EventHandler = EventHandler
 local eventFrame = CreateFrame("Frame")
 local initialized = false
 
+local function CheckForActiveState()
+	C_Timer.After(0, function()
+		local _, _, difficultyID = GetInstanceInfo()
+
+		if IsEncounterInProgress() or difficultyID == 8 then
+			addon.BattleResTimer:Start()
+		else
+			addon.BattleResTimer:Stop()
+		end
+	end)
+end
+
 function EventHandler:Initialize()
 	if initialized then
 		error("EventHandler already initialized", 2)
@@ -15,6 +27,8 @@ function EventHandler:Initialize()
 	eventFrame:RegisterEvent("ENCOUNTER_END")
 	eventFrame:RegisterEvent("CHALLENGE_MODE_START")
 	eventFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
+	eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+	eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 	eventFrame:SetScript("OnEvent", function(self, event, ...)
 		if EventHandler[event] then
@@ -24,13 +38,7 @@ function EventHandler:Initialize()
 
 	initialized = true
 
-	C_Timer.After(0, function()
-		local _, _, difficultyID = GetInstanceInfo()
-
-		if IsEncounterInProgress() or difficultyID == 8 then
-			addon.BattleResTimer:Start()
-		end
-	end)
+	CheckForActiveState()
 end
 
 function EventHandler:ENCOUNTER_START()
@@ -47,4 +55,12 @@ end
 
 function EventHandler:CHALLENGE_MODE_COMPLETED()
 	addon.BattleResTimer:Stop()
+end
+
+function EventHandler:PLAYER_ENTERING_WORLD()
+	CheckForActiveState()
+end
+
+function EventHandler:ZONE_CHANGED_NEW_AREA()
+	CheckForActiveState()
 end
