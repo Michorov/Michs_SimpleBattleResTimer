@@ -5,4 +5,7 @@
 ## Version: 0.1.0
 ## X-License: MIT
 
+Libs/LibStub/LibStub.lua
+Libs/MichsPixelPerfectLib-1.0/MichsPixelPerfectLib-1.0.lua
+
 Core.lua
