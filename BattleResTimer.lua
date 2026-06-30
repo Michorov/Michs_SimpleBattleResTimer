@@ -6,11 +6,6 @@ addon.BattleResTimer = BattleResTimer
 addon.PixelPerfect = LibStub("MichsPixelPerfectLib-1.0"):CreateScaler()
 local PP = addon.PixelPerfect
 
-local PANEL_WIDTH = 96
-local PANEL_HEIGHT = 32
-local BACKGROUND_OPACITY = 0.6
-local FONT_SIZE = 16
-
 local timerFrame
 local ticker
 
@@ -59,19 +54,49 @@ function BattleResTimer:Initialize()
 	end)
 end
 
-function BattleResTimer:UpdateSettings()
-	timerFrame:SetSize(PP:ToUIScaled(PANEL_WIDTH), PP:ToUIScaled(PANEL_HEIGHT))
+function BattleResTimer:UpdatePosition()
+	local settings = addon.Database:GetSettings()
+	PP:CenterElement(timerFrame, UIParent, PP:ToUIScaled(settings.positionX), PP:ToUIScaled(settings.positionY))
+end
+
+function BattleResTimer:UpdateSize()
+	local settings = addon.Database:GetSettings()
+
+	timerFrame:SetSize(PP:ToUIScaled(settings.width), PP:ToUIScaled(settings.height))
 	timerFrame:SetBackdrop({
 		bgFile = "Interface\\Buttons\\WHITE8X8",
 		edgeFile = "Interface\\Buttons\\WHITE8X8",
 		edgeSize = PP:ToUIScaled(1),
 	})
-	timerFrame:SetBackdropColor(0, 0, 0, BACKGROUND_OPACITY)
-	timerFrame:SetBackdropBorderColor(0, 0, 0, math.min(BACKGROUND_OPACITY + 0.25, 1))
 
-	timerFrame.text:SetFont(STANDARD_TEXT_FONT, PP:ScaleFont(FONT_SIZE), "OUTLINE")
+	self:UpdateBackground()
+end
 
-	PP:CenterElement(timerFrame, UIParent, PP:ToUIScaled(0), PP:ToUIScaled(0))
+function BattleResTimer:UpdateBackground()
+	local settings = addon.Database:GetSettings()
+	local backgroundOpacity = settings.backgroundOpacity
+
+	if backgroundOpacity <= 0 then
+		timerFrame:SetBackdropColor(0, 0, 0, 0)
+		timerFrame:SetBackdropBorderColor(0, 0, 0, 0)
+		return
+	end
+
+	local borderOpacity = math.min(backgroundOpacity + 0.25, 1)
+
+	timerFrame:SetBackdropColor(0, 0, 0, backgroundOpacity)
+	timerFrame:SetBackdropBorderColor(0, 0, 0, borderOpacity)
+end
+
+function BattleResTimer:UpdateTextStyle()
+	local settings = addon.Database:GetSettings()
+	timerFrame.text:SetFont(STANDARD_TEXT_FONT, PP:ScaleFont(settings.fontSize), "OUTLINE")
+end
+
+function BattleResTimer:UpdateSettings()
+	self:UpdateSize()
+	self:UpdatePosition()
+	self:UpdateTextStyle()
 
 	UpdateVisibility()
 end
