@@ -1,0 +1,8 @@
+## Interface: 120007
+## Title: Mich's Simple Battle Res Timer
+## Notes: Tracks battle resurrection availability.
+## Author: Mich
+## Version: 0.1.0
+## X-License: MIT
+
+Core.lua
