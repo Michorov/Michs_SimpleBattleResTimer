@@ -34,21 +34,17 @@ function EventHandler:Initialize()
 end
 
 function EventHandler:ENCOUNTER_START()
-	print("ENCOUNTER_START")
 	addon.BattleResTimer:Start()
 end
 
 function EventHandler:ENCOUNTER_END()
-	print("ENCOUNTER_END")
 	addon.BattleResTimer:Stop()
 end
 
 function EventHandler:CHALLENGE_MODE_START()
-	print("CHALLENGE_MODE_START")
 	addon.BattleResTimer:Start()
 end
 
 function EventHandler:CHALLENGE_MODE_COMPLETED()
-	print("CHALLENGE_MODE_COMPLETED")
 	addon.BattleResTimer:Stop()
 end
