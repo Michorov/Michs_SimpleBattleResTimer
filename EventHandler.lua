@@ -46,7 +46,7 @@ function EventHandler:ENCOUNTER_START()
 end
 
 function EventHandler:ENCOUNTER_END()
-	addon.BattleResTimer:Stop()
+	CheckForActiveState()
 end
 
 function EventHandler:CHALLENGE_MODE_START()
