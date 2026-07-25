@@ -1,8 +1,8 @@
-## Interface: 120007
+## Interface: 120007, 120100
 ## Title: Mich's Simple Battle Res Timer
 ## Notes: Tracks battle resurrection availability.
 ## Author: Mich
-## Version: 1.0.1
+## Version: 1.0.2
 ## X-License: MIT
 ## SavedVariables: MichsSimpleBattleResTimerDB
 
