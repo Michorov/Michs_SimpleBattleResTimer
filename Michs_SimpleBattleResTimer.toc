@@ -6,6 +6,7 @@
 ## Version: 1.0.2
 ## X-License: MIT
 ## SavedVariables: MichsSimpleBattleResTimerDB
+## IconTexture: Interface\AddOns\Michs_SimpleBattleResTimer\Media\LogoIcon.png
 
 Libs/LibStub/LibStub.lua
 Libs/MichsPixelPerfectLib-1.0/MichsPixelPerfectLib-1.0.lua
