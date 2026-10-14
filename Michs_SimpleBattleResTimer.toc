@@ -1,9 +1,9 @@
-## Interface: 120007, 120100
+## Interface: 16001, 120105
 ## Title: Mich's Simple Battle Res Timer
 ## Category: Mich's Toolkit
 ## Notes: Tracks battle resurrection availability.
 ## Author: Mich
-## Version: 1.0.2
+## Version: 1.0.3
 ## X-License: MIT
 ## SavedVariables: MichsSimpleBattleResTimerDB
 ## IconTexture: Interface\AddOns\Michs_SimpleBattleResTimer\Media\LogoIcon.png
