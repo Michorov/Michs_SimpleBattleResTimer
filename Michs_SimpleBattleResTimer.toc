@@ -9,7 +9,7 @@
 ## IconTexture: Interface\AddOns\Michs_SimpleBattleResTimer\Media\LogoIcon.png
 
 Libs/LibStub/LibStub.lua
-Libs/MichsPixelPerfectLib-1.0/MichsPixelPerfectLib-1.0.lua
+Libs/MichsPixelPerfectLib-2.0/MichsPixelPerfectLib-2.0.lua
 
 Database.lua
 BattleResTimer.lua
