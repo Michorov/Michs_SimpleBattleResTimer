@@ -3,7 +3,7 @@
 ## Category: Mich's Toolkit
 ## Notes: Tracks battle resurrection availability.
 ## Author: Mich
-## Version: 1.0.3
+## Version: 1.0.4
 ## X-License: MIT
 ## SavedVariables: MichsSimpleBattleResTimerDB
 ## IconTexture: Interface\AddOns\Michs_SimpleBattleResTimer\Media\LogoIcon.png
